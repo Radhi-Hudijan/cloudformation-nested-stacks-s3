@@ -11,8 +11,7 @@ Resources:
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-
-    deletionPolicy: Retain
+    DeletionPolicy: Retain
 
   S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -26,11 +25,11 @@ Resources:
               - s3:GetObject
             Resource: !Sub arn:aws:s3:::${S3Bucket}/*
 
-  Outputs:
-    websiteURL:
-      Value: !GetAtt S3Bucket.WebsiteURL
-      Description: URL of the S3 bucket
+Outputs:
+  websiteURL:
+    Value: !GetAtt S3Bucket.WebsiteURL
+    Description: URL of the S3 bucket
 
-    S3BucketSeureURL:
-      Value: !GetAtt S3Bucket.DomainName
-      Description: S3 bucket secure URL
+  S3BucketSecureURL:
+    Value: !GetAtt S3Bucket.DomainName
+    Description: S3 bucket secure URL
