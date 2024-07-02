@@ -1,0 +1,36 @@
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+    PublicAccessBlockConfiguration:
+      BlockPublicAcls: false
+      IgnorePublicAcls: false
+      BlockPublicPolicy: false
+      RestrictPublicBuckets: false
+
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref MyS3Bucket
+      PolicyDocument:
+        id: MyPolicy
+        Version: "2012-10-17"
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: "*"
+            Action: "s3:GetObject"
+            Resource: !Sub "arn:aws:s3:::${MyS3Bucket}/*"
+
+Outputs:
+  BucketName:
+    Value: !Ref MyS3Bucket
+    Description: Name of the S3 bucket
+
+  websiteURL:
+    Value: !GetAtt MyS3Bucket.WebsiteURL
+    Description: URL of the website hosted on S3 bucket
+
+  S3BuketSeucreURL:
+    Value: !GetAtt MyS3Bucket.DomainName
+    Description: S3 bucket secure URL
