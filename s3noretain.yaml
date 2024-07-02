@@ -7,13 +7,16 @@ Resources:
       IgnorePublicAcls: false
       BlockPublicPolicy: false
       RestrictPublicBuckets: false
+    WebsiteConfiguration:
+      IndexDocument: index.html
+      ErrorDocument: error.html
 
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
       Bucket: !Ref MyS3Bucket
       PolicyDocument:
-        id: MyPolicy
+        Id: MyPolicy
         Version: "2012-10-17"
         Statement:
           - Sid: PublicReadGetObject
@@ -27,6 +30,6 @@ Outputs:
     Value: !GetAtt MyS3Bucket.WebsiteURL
     Description: URL of the website hosted on S3 bucket
 
-  S3BuketSeucreURL:
+  S3BucketSecureURL:
     Value: !GetAtt MyS3Bucket.DomainName
     Description: S3 bucket secure URL
