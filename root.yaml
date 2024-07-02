@@ -5,5 +5,4 @@ Resources:
   MyNoretainStack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: s3://mynestedstack2266/s3noretain.yaml
-      timeoutInMinutes: 60
+      TemplateURL: https://s3.amazonaws.com/mynestedstack4455/s3noretain.yaml
