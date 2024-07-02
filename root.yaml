@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: This the root template
+
+Resources:
+  MyNoretainStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: s3://mynestedstack2266/s3noretain.yaml
+      timeoutInMinutes: 60
