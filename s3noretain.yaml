@@ -23,10 +23,6 @@ Resources:
             Resource: !Sub "arn:aws:s3:::${MyS3Bucket}/*"
 
 Outputs:
-  BucketName:
-    Value: !Ref MyS3Bucket
-    Description: Name of the S3 bucket
-
   websiteURL:
     Value: !GetAtt MyS3Bucket.WebsiteURL
     Description: URL of the website hosted on S3 bucket
