@@ -3,16 +3,16 @@ Resources:
   S3Bucket:
     Type: AWS::S3::Bucket
     Properties:
-      publicAccessBlockConfiguration:
+      PublicAccessBlockConfiguration:
         BlockPublicAcls: false
         BlockPublicPolicy: false
         IgnorePublicAcls: true
         RestrictPublicBuckets: false
-      websiteConfiguration:
+      WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
 
-      deletionPolicy: Retain
+    deletionPolicy: Retain
 
   S3BucketPolicy:
     Type: AWS::S3::BucketPolicy
@@ -26,7 +26,7 @@ Resources:
               - s3:GetObject
             Resource: !Sub arn:aws:s3:::${S3Bucket}/*
 
-  Output:
+  Outputs:
     websiteURL:
       Value: !GetAtt S3Bucket.WebsiteURL
       Description: URL of the S3 bucket
